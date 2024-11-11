@@ -1,7 +1,6 @@
-// PersonalDetails.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Button, Container,Row,Col,Card } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 function RegistrationForm() {
   const [formData, setFormData] = useState({
@@ -32,12 +31,12 @@ function RegistrationForm() {
   };
 
   return (
-    <Container className="my-2" style={{ maxWidth: '800px' }}>
-      <div className="border p-4 rounded shadow">
-        <h2 className="my-2 text-center">Personal Details</h2>
+    <Container className="my-2 max-w-3xl mx-auto">
+      <div className="border p-6 rounded-lg shadow-lg bg-gray-800 text-white">
+        <h2 className="my-2 text-center text-3xl font-bold">Personal Details</h2>
         <form onSubmit={handleSubmit}>
-          <Row className="mb-3">
-            {/* Artist Name (Left) */}
+          {/* Artist Name & Profile Picture */}
+          <Row className="mb-4">
             <Col md={6}>
               <Form.Group controlId="artistName">
                 <Form.Label className="text-start">Artist Name</Form.Label>
@@ -47,11 +46,11 @@ function RegistrationForm() {
                   value={formData.artistName}
                   onChange={handleChange}
                   required
+                  className="bg-gray-700 text-white border-gray-600 p-2 text-sm"
                 />
               </Form.Group>
             </Col>
 
-            {/* Profile Picture (Right) */}
             <Col md={6}>
               <Form.Group controlId="profilePicture">
                 <Form.Label>Profile Picture</Form.Label>
@@ -60,13 +59,14 @@ function RegistrationForm() {
                   name="profilePicture"
                   onChange={handleChange}
                   required
+                  className="bg-gray-700 text-white border-gray-600 p-2 text-sm"
                 />
               </Form.Group>
             </Col>
           </Row>
 
-          <Row className="mb-3">
-            {/* About (Left) */}
+          {/* About Section */}
+          <Row className="mb-4">
             <Col md={12}>
               <Form.Group controlId="about">
                 <Form.Label>About</Form.Label>
@@ -77,13 +77,14 @@ function RegistrationForm() {
                   value={formData.about}
                   onChange={handleChange}
                   required
+                  className="bg-gray-700 text-white border-gray-600 p-2 text-sm"
                 />
               </Form.Group>
             </Col>
           </Row>
-            
-            <Row className="mb-3">
-            {/* Primary Work Location (Left) */}
+
+          {/* Contact Info & Other Details */}
+          <Row className="mb-4">
             <Col md={6}>
               <Form.Group controlId="primaryWorkLocation">
                 <Form.Label>Email ID</Form.Label>
@@ -93,11 +94,11 @@ function RegistrationForm() {
                   value={formData.primaryWorkLocation}
                   onChange={handleChange}
                   required
+                  className="bg-gray-700 text-white border-gray-600 p-2 text-sm"
                 />
               </Form.Group>
             </Col>
 
-            {/* Height (Right) */}
             <Col md={6}>
               <Form.Group controlId="height">
                 <Form.Label>Phone No.</Form.Label>
@@ -107,14 +108,14 @@ function RegistrationForm() {
                   value={formData.height}
                   onChange={handleChange}
                   required
+                  className="bg-gray-700 text-white border-gray-600 p-2 text-sm"
                 />
               </Form.Group>
             </Col>
           </Row>
-          
 
-          <Row className="mb-3">
-            {/* Height (Right) */}
+          {/* Height, Weight & Age */}
+          <Row className="mb-4">
             <Col md={6}>
               <Form.Group controlId="height">
                 <Form.Label>Height (in cm)</Form.Label>
@@ -124,13 +125,11 @@ function RegistrationForm() {
                   value={formData.height}
                   onChange={handleChange}
                   required
+                  className="bg-gray-700 text-white border-gray-600 p-2 text-sm"
                 />
               </Form.Group>
             </Col>
-          
 
-          
-            {/* Weight (Left) */}
             <Col md={6}>
               <Form.Group controlId="weight">
                 <Form.Label>Weight (in kg)</Form.Label>
@@ -140,13 +139,13 @@ function RegistrationForm() {
                   value={formData.weight}
                   onChange={handleChange}
                   required
+                  className="bg-gray-700 text-white border-gray-600 p-2 text-sm"
                 />
               </Form.Group>
             </Col>
-            </Row>
+          </Row>
 
-            {/* Age (Right) */}
-            <Row className="mb-3">
+          <Row className="mb-4">
             <Col md={6}>
               <Form.Group controlId="age">
                 <Form.Label>Age</Form.Label>
@@ -156,16 +155,17 @@ function RegistrationForm() {
                   value={formData.age}
                   onChange={handleChange}
                   required
+                  className="bg-gray-700 text-white border-gray-600 p-2 text-sm"
                 />
               </Form.Group>
             </Col>
           </Row>
 
           {/* Submit Button */}
-          <div className="text-centre" style={{marginLeft:"300px"}}>
-          <Button variant="primary" type="submit" className="mt-3">
-            Next
-          </Button>
+          <div className="text-center">
+            <Button variant="primary" type="submit" className="mt-4 px-6 py-3 bg-indigo-600 hover:bg-indigo-700">
+              Next
+            </Button>
           </div>
         </form>
       </div>
