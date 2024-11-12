@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Menu, X, ChevronDown,User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import logo from './images/logo.svg'
+import logo from '../images/logo.svg';
  
 
 
-function Navbar() {
+function ArtistNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeForm, setActiveForm] = useState(null);
    const navigate = useNavigate();
@@ -20,7 +20,7 @@ function Navbar() {
   };
 
   const handleLoginClick = () => {
-    navigate('/login');
+    navigate('/register-artist');
   };
 
   return (
@@ -44,27 +44,11 @@ function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:block">
-            <div className="flex items-center space-x-8">
-              {/* Artist Button */}
-              <Link
-                to="/artist-page" // Link to the artist signup page
-                className="text-white hover:text-gray-300 flex items-center no-underline"
-              >
-                Artist
-              </Link>
-
-              {/* Casting Director Button */}
-              <Link
-                to="/director-page" // Link to the director signup page
-                className="text-white hover:text-gray-300 flex items-center no-underline"
-              >
-                Casting Director
-              </Link>
-              
+            <div className="flex items-center space-x-8">  
               {/* Login Button */}
               <button onClick={handleLoginClick} className="text-white hover:text-gray-300 flex items-center">
                 <User className="mr-2 h-5 w-5" /> {/* Add User icon here */}
-                Login
+                Register
               </button>
             </div>
           </div>
@@ -104,4 +88,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default ArtistNavbar;

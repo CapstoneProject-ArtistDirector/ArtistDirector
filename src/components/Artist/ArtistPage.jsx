@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from './Navbar';
+import ArtistNavbar from './ArtistNavbar';
 
-function LandingPage() {
+function ArtistPage() {
   return (
     <div className="relative min-h-screen">
       {/* Background Image with Overlay */}
@@ -18,7 +18,7 @@ function LandingPage() {
 
       {/* Content */}
       <div className="relative z-10">
-        <Navbar />
+        <ArtistNavbar />
         
         <main className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto">
@@ -41,4 +41,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default ArtistPage;

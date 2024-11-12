@@ -31,7 +31,7 @@ function RegistrationForm() {
   };
 
   return (
-    <Container className="my-2 max-w-3xl mx-auto">
+    <Container className="my-2 max-w-3xl  mx-auto">
       <div className="border p-6 rounded-lg shadow-lg bg-gray-800 text-white">
         <h2 className="my-2 text-center text-3xl font-bold">Personal Details</h2>
         <form onSubmit={handleSubmit}>
@@ -39,7 +39,7 @@ function RegistrationForm() {
           <Row className="mb-4">
             <Col md={6}>
               <Form.Group controlId="artistName">
-                <Form.Label className="text-start">Artist Name</Form.Label>
+                <Form.Label className="text-start text-gray-300">Artist Name</Form.Label>
                 <Form.Control
                   type="text"
                   name="artistName"
@@ -53,7 +53,7 @@ function RegistrationForm() {
 
             <Col md={6}>
               <Form.Group controlId="profilePicture">
-                <Form.Label>Profile Picture</Form.Label>
+                <Form.Label className="text-gray-300">Profile Picture</Form.Label>
                 <Form.Control
                   type="file"
                   name="profilePicture"
@@ -69,7 +69,7 @@ function RegistrationForm() {
           <Row className="mb-4">
             <Col md={12}>
               <Form.Group controlId="about">
-                <Form.Label>About</Form.Label>
+                <Form.Label className="text-gray-300">About</Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={3}
@@ -87,7 +87,7 @@ function RegistrationForm() {
           <Row className="mb-4">
             <Col md={6}>
               <Form.Group controlId="primaryWorkLocation">
-                <Form.Label>Email ID</Form.Label>
+                <Form.Label className="text-gray-300">Email ID</Form.Label>
                 <Form.Control
                   type="text"
                   name="primaryWorkLocation"
@@ -101,7 +101,7 @@ function RegistrationForm() {
 
             <Col md={6}>
               <Form.Group controlId="height">
-                <Form.Label>Phone No.</Form.Label>
+                <Form.Label className="text-gray-300">Phone No.</Form.Label>
                 <Form.Control
                   type="number"
                   name="height"
@@ -118,7 +118,7 @@ function RegistrationForm() {
           <Row className="mb-4">
             <Col md={6}>
               <Form.Group controlId="height">
-                <Form.Label>Height (in cm)</Form.Label>
+                <Form.Label className="text-gray-300">Height (in cm)</Form.Label>
                 <Form.Control
                   type="number"
                   name="height"
@@ -132,7 +132,7 @@ function RegistrationForm() {
 
             <Col md={6}>
               <Form.Group controlId="weight">
-                <Form.Label>Weight (in kg)</Form.Label>
+                <Form.Label className="text-gray-300">Weight (in kg)</Form.Label>
                 <Form.Control
                   type="number"
                   name="weight"
@@ -148,7 +148,7 @@ function RegistrationForm() {
           <Row className="mb-4">
             <Col md={6}>
               <Form.Group controlId="age">
-                <Form.Label>Age</Form.Label>
+                <Form.Label className="text-gray-300">Age</Form.Label>
                 <Form.Control
                   type="number"
                   name="age"
@@ -163,7 +163,11 @@ function RegistrationForm() {
 
           {/* Submit Button */}
           <div className="text-center">
-            <Button variant="primary" type="submit" className="mt-4 px-6 py-3 bg-indigo-600 hover:bg-indigo-700">
+            <Button
+              variant="primary"
+              type="submit"
+              className="mt-4 px-6 py-3 rounded-l-full bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 text-white"
+            >
               Next
             </Button>
           </div>

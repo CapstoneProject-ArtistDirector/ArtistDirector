@@ -1,16 +1,17 @@
 import React from 'react';
-import Navbar from './Navbar';
+import DirectorNavbar from './DirectorNavbar';
 
-function LandingPage() {
+function DirectorPage() {
   return (
     <div className="relative min-h-screen">
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url(https://img.freepik.com/free-photo/movie-background-collage_23-2149876015.jpg?t=st=1731324394~exp=1731327994~hmac=d8a05faf4dc05c2095478619bf842710826ff93bab85f8a7617a73859f1c4def&w=740)',
+          backgroundImage: 'url(https://img.freepik.com/free-photo/man-filming-with-professional-camera_23-2149066345.jpg?t=st=1731385100~exp=1731388700~hmac=fb3967a466980ffb666e692f5bb4a6b60f5459ed5b8caa7b107ee1ff87af30fe&w=740)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          filter:'none',
         }}
       >
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
@@ -18,7 +19,7 @@ function LandingPage() {
 
       {/* Content */}
       <div className="relative z-10">
-        <Navbar />
+        <DirectorNavbar />
         
         <main className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-3xl mx-auto">
@@ -41,4 +42,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default DirectorPage;
