@@ -15,13 +15,16 @@ import ArtistPage from './components/Artist/ArtistPage';
 import ArtistNavbar from './components/Artist/ArtistNavbar';
 import DirectorPage from './components/CastingDirector/DirectorPage';
 import DirectorNavbar from './components/CastingDirector/DirectorNavbar';
+import ArtistProfileDashboard from './components/Artist/ArtistProfileDashboard';
+import TalentPosts from './components/TalentPost/TalentPosts';
+import AppliedPosts from './components/TalentPost/AppliedPosts';
 
 function App() {
   
 
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage/>} />
           <Route path="/login" element={<LoginForm/>} />
@@ -35,7 +38,16 @@ function App() {
           <Route path="/register-director" element={<RegistrationForm/>}/>
         </Routes>
         <Footer></Footer>
+    </BrowserRouter> */}
+    {/* <ArtistProfileDashboard></ArtistProfileDashboard> */}
+     <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<TalentPosts />} />
+        <Route path="/dashboard" element={<ArtistProfileDashboard />} />
+        <Route path="/applied-posts" element={<AppliedPosts />} />
+      </Routes>
     </BrowserRouter>
+    {/* <TalentPosts></TalentPosts> */}
     </>
   )
 }
