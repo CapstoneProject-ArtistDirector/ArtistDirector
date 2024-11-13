@@ -18,6 +18,9 @@ import DirectorNavbar from './components/CastingDirector/DirectorNavbar';
 import ArtistProfileDashboard from './components/Artist/ArtistProfileDashboard';
 import TalentPosts from './components/TalentPost/TalentPosts';
 import AppliedPosts from './components/TalentPost/AppliedPosts';
+import CastingForm from './components/CastingDirector/CastingForm';
+import DirectorHome from './components/CastingDirector/DirectorHome';
+import DirectorDashboard from './components/CastingDirector/DirectorDashboard';
 
 function App() {
   
@@ -40,14 +43,25 @@ function App() {
         <Footer></Footer>
     </BrowserRouter> */}
     {/* <ArtistProfileDashboard></ArtistProfileDashboard> */}
-     <BrowserRouter>
+     {/* <BrowserRouter>
       <Routes>
         <Route path="/" element={<TalentPosts />} />
         <Route path="/dashboard" element={<ArtistProfileDashboard />} />
         <Route path="/applied-posts" element={<AppliedPosts />} />
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter> */}
+     {/* <CastingForm></CastingForm> */}
     {/* <TalentPosts></TalentPosts> */}
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<DirectorHome />} />
+        <Route path="/profile" element={<ArtistProfileDashboard />} />
+        <Route path="/applied-posts" element={<AppliedPosts />} />
+        <Route path="/director" element={<DirectorHome />} />
+        <Route path="/director/dashboard" element={<DirectorDashboard />} />
+        <Route path="/add-talent-post" element={<CastingForm/>}/>
+      </Routes>
+    </BrowserRouter>
     </>
   )
 }
