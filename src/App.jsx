@@ -21,6 +21,7 @@ import AppliedPosts from './components/TalentPost/AppliedPosts';
 import CastingForm from './components/CastingDirector/CastingForm';
 import DirectorHome from './components/CastingDirector/DirectorHome';
 import DirectorDashboard from './components/CastingDirector/DirectorDashboard';
+import ReactDOM from 'react-dom';
 
 function App() {
   
@@ -50,7 +51,6 @@ function App() {
         <Route path="/applied-posts" element={<AppliedPosts />} />
       </Routes>
     </BrowserRouter> */}
-     {/* <CastingForm></CastingForm> */}
     {/* <TalentPosts></TalentPosts> */}
       <BrowserRouter>
       <Routes>

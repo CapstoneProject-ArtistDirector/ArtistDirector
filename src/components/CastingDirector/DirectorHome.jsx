@@ -3,26 +3,6 @@ import { Link } from 'react-router-dom';
 import { FiHome, FiUser, FiLogOut, FiPlusCircle } from 'react-icons/fi';
 
 function DirectorHome() {
-  const handleSignOut = () => {
-    console.log('Sign out clicked');
-    // Add sign out logic here
-  };
-
-  const quotes = [
-    {
-      text: "Art is not what you see, but what you make others see.",
-      author: "Edgar Degas"
-    },
-    {
-      text: "Every artist was first an amateur.",
-      author: "Ralph Waldo Emerson"
-    },
-    {
-      text: "Creativity takes courage.",
-      author: "Henri Matisse"
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       {/* Navbar */}
@@ -32,34 +12,34 @@ function DirectorHome() {
             <div className="flex items-center space-x-4">
               <Link
                 to="/director/dashboard"
-                className="flex items-center px-4 py-2 text-sm text-white bg-gray-700/80 hover:bg-gray-600/80 rounded-lg transition-colors"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
               >
                 <FiHome className="mr-2" />
                 Dashboard
               </Link>
               <Link
                 to="/profile"
-                className="flex items-center px-4 py-2 text-sm text-white bg-gray-700/80 hover:bg-gray-600/80 rounded-lg transition-colors"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
               >
                 <FiUser className="mr-2" />
                 Profile
               </Link>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-6">
               <Link
                 to="/add-talent-post"
-                className="flex items-center px-4 py-2 text-sm text-white bg-blue-600/80 hover:bg-blue-700/80 rounded-lg transition-colors"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
               >
                 <FiPlusCircle className="mr-2" />
                 Add Talent Post
               </Link>
-              <button
-                onClick={handleSignOut}
-                className="flex items-center px-4 py-2 text-sm text-white bg-red-500/80 hover:bg-red-600/80 rounded-lg transition-colors"
+              <Link
+                to="/logout"
+                className="flex items-center text-white hover:text-red-400 transition-colors no-underline"
               >
                 <FiLogOut className="mr-2" />
                 Sign Out
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -73,7 +53,20 @@ function DirectorHome() {
           </h1>
           
           <div className="space-y-8">
-            {quotes.map((quote, index) => (
+            {[
+              {
+                text: "Art is not what you see, but what you make others see.",
+                author: "Edgar Degas"
+              },
+              {
+                text: "Every artist was first an amateur.",
+                author: "Ralph Waldo Emerson"
+              },
+              {
+                text: "Creativity takes courage.",
+                author: "Henri Matisse"
+              }
+            ].map((quote, index) => (
               <div
                 key={index}
                 className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 transform hover:scale-105 transition-transform"
@@ -89,7 +82,7 @@ function DirectorHome() {
           <div className="pt-8">
             <Link
               to="/director/dashboard"
-              className="inline-flex items-center px-6 py-3 text-lg text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+              className="inline-flex items-center px-6 py-3 text-lg text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors no-underline"
             >
               <FiHome className="mr-2" />
               View Your Dashboard
