@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { FiHome, FiUser, FiLogOut } from 'react-icons/fi';
+import { RxDashboard } from "react-icons/rx";
+import { Link } from 'react-router-dom';
 
 function ArtistRegister() {
   const [formData, setFormData] = useState({
@@ -14,6 +16,8 @@ function ArtistRegister() {
     artistSpecialSkills: '',
     artistExperience: '',
     artistType: '',
+    artistEmail:'',
+    artistPhoneNumber:'',
   });
 
   const handleChange = (e) => {
@@ -39,28 +43,36 @@ function ArtistRegister() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
-              <a
-                href="/home"
+              
+              <Link
+                to="/home"
                 className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
               >
                 <FiHome className="mr-2" />
                 Home
-              </a>
-              <a
-                href="/profile"
+              </Link>
+              <Link
+                to="/dashboard"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
+              >
+                <RxDashboard className="mr-2" />
+                Dashboard
+              </Link>
+              <Link
+                to="/profile"
                 className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
               >
                 <FiUser className="mr-2" />
                 Profile
-              </a>
+              </Link>
             </div>
-            <a
-              href="/logout"
+            <Link
+              to="/logout"
               className="flex items-center text-white hover:text-red-400 transition-colors no-underline"
             >
               <FiLogOut className="mr-2" />
               Sign Out
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
@@ -75,12 +87,11 @@ function ArtistRegister() {
 
             {/* Single Form Section */}
             <form onSubmit={handleSubmit}>
-              <h3 className="text-xl text-white mb-4">Personal Details</h3>
 
               <Row className="mb-4">
                 <Col md={6}>
                   <Form.Group controlId="artistName">
-                    <Form.Label className="text-sm text-gray-300">Artist Name</Form.Label>
+                    <Form.Label className="text-base font-semibold text-gray-300">Artist Name</Form.Label>
                     <input
                       type="text"
                       name="artistName"
@@ -93,11 +104,42 @@ function ArtistRegister() {
                 </Col>
 
                 <Col md={6}>
-                  <Form.Group controlId="artistProfilePicture">
-                    <Form.Label className="text-sm text-gray-300">Profile Picture</Form.Label>
+                  <Form.Group controlId="artistPrimaryWorkLocation">
+                    <Form.Label className="text-base font-semibold text-gray-300">Primary Work Location</Form.Label>
                     <input
-                      type="file"
-                      name="artistProfilePicture"
+                      type="text"
+                      name="artistPrimaryWorkLocation"
+                      value={formData.artistPrimaryWorkLocation}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-gray-700 border border-gray-600 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+
+              <Row className="mb-4">
+                <Col md={6}>
+                  <Form.Group controlId="artistEmail">
+                    <Form.Label className="text-base font-semibold text-gray-300">Email ID</Form.Label>
+                    <input
+                      type="email"
+                      name="artistEmail"
+                      value={formData.artistEmail}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-gray-700 border border-gray-600 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </Form.Group>
+                </Col>
+
+                <Col md={6}>
+                  <Form.Group controlId="artistPhoneNumber">
+                    <Form.Label className="text-base font-semibold text-gray-300">Phone Number</Form.Label>
+                    <input
+                      type="text"
+                      name="artistPhoneNumber"
+                      value={formData.artistPhoneNumber}
                       onChange={handleChange}
                       required
                       className="w-full bg-gray-700 border border-gray-600 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -109,7 +151,7 @@ function ArtistRegister() {
               <Row className="mb-4">
                 <Col md={12}>
                   <Form.Group controlId="artistAbout">
-                    <Form.Label className="text-sm text-gray-300">About</Form.Label>
+                    <Form.Label className="text-base font-semibold text-gray-300">About</Form.Label>
                     <textarea
                       rows={3}
                       name="artistAbout"
@@ -125,7 +167,7 @@ function ArtistRegister() {
               <Row className="mb-4">
                 <Col md={6}>
                   <Form.Group controlId="artistHeight">
-                    <Form.Label className="text-sm text-gray-300">Height (in cm)</Form.Label>
+                    <Form.Label className="text-base font-semibold text-gray-300">Height (in cm)</Form.Label>
                     <input
                       type="number"
                       name="artistHeight"
@@ -139,7 +181,7 @@ function ArtistRegister() {
 
                 <Col md={6}>
                   <Form.Group controlId="artistWeight">
-                    <Form.Label className="text-sm text-gray-300">Weight (in kg)</Form.Label>
+                    <Form.Label className="text-base font-semibold text-gray-300">Weight (in kg)</Form.Label>
                     <input
                       type="number"
                       name="artistWeight"
@@ -155,7 +197,7 @@ function ArtistRegister() {
               <Row className="mb-4">
                 <Col md={6}>
                   <Form.Group controlId="artistAge">
-                    <Form.Label className="text-sm text-gray-300">Age</Form.Label>
+                    <Form.Label className="text-base font-semibold text-gray-300">Age</Form.Label>
                     <input
                       type="number"
                       name="artistAge"
@@ -166,28 +208,35 @@ function ArtistRegister() {
                     />
                   </Form.Group>
                 </Col>
-              </Row>
 
-              <Row className="mb-4">
-                <Col md={12}>
-                  <Form.Group controlId="artistSpecialSkills">
-                    <Form.Label className="text-sm text-gray-300">Special Skills</Form.Label>
-                    <input
-                      type="text"
-                      name="artistSpecialSkills"
-                      value={formData.artistSpecialSkills}
+                <Col md={6}>
+                  <Form.Group controlId="artistType">
+                    <Form.Label className="text-base font-semibold text-gray-300">Artist Type</Form.Label>
+                    <select
+                      name="artistType"
+                      value={formData.artistType}
                       onChange={handleChange}
                       required
                       className="w-full bg-gray-700 border border-gray-600 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
+                    >
+                      <option >SELECT</option>
+                      <option value="Painter">Actor</option>
+                      <option value="Sculptor">Musician</option>
+                      <option value="Photographer">Dancer</option>
+                      <option value="Photographer">Model</option>
+                      <option value="Photographer">Voice Artist</option>
+                      <option value="Photographer">Performer</option>
+                    </select>
                   </Form.Group>
                 </Col>
+
+                
               </Row>
 
               <Row className="mb-4">
                 <Col md={6}>
                   <Form.Group controlId="artistExperience">
-                    <Form.Label className="text-sm text-gray-300">Experience (years)</Form.Label>
+                    <Form.Label className="text-base font-semibold text-gray-300">Experience (years)</Form.Label>
                     <input
                       type="number"
                       name="artistExperience"
@@ -198,45 +247,43 @@ function ArtistRegister() {
                     />
                   </Form.Group>
                 </Col>
-
-                <Col md={6}>
-                  <Form.Group controlId="artistPrimaryWorkLocation">
-                    <Form.Label className="text-sm text-gray-300">Primary Work Location</Form.Label>
+                
+                 <Col md={6}>
+                  <Form.Group controlId="artistProfilePicture">
+                    <Form.Label className="text-base font-semibold text-gray-300">Profile Picture</Form.Label>
                     <input
                       type="text"
-                      name="artistPrimaryWorkLocation"
-                      value={formData.artistPrimaryWorkLocation}
+                      name="artistProfilePicture"
                       onChange={handleChange}
                       required
                       className="w-full bg-gray-700 border border-gray-600 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </Form.Group>
                 </Col>
+                
               </Row>
 
               <Row className="mb-4">
                 <Col md={12}>
-                  <Form.Group controlId="artistType">
-                    <Form.Label className="text-sm text-gray-300">Artist Type</Form.Label>
-                    <select
-                      name="artistType"
-                      value={formData.artistType}
+                  <Form.Group controlId="artistSpecialSkills">
+                    <Form.Label className="text-base font-semibold text-gray-300">Special Skills</Form.Label>
+                    <input
+                      type="text"
+                      name="artistSpecialSkills"
+                      value={formData.artistSpecialSkills}
                       onChange={handleChange}
                       required
                       className="w-full bg-gray-700 border border-gray-600 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value="Painter">Painter</option>
-                      <option value="Sculptor">Sculptor</option>
-                      <option value="Photographer">Photographer</option>
-                    </select>
+                    />
                   </Form.Group>
                 </Col>
+                
               </Row>
 
               <div className="flex justify-center">
                 <Button
                   type="submit"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="bg-green-600 hover:bg-green-400  text-white px-2 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
                 >
                   Submit
                 </Button>
