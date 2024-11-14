@@ -8,7 +8,7 @@ function ArtistPage() {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url(https://img.freepik.com/free-photo/movie-background-collage_23-2149876015.jpg?t=st=1731324394~exp=1731327994~hmac=d8a05faf4dc05c2095478619bf842710826ff93bab85f8a7617a73859f1c4def&w=740)',
+          backgroundImage: 'url(https://img.freepik.com/premium-photo/people-are-sitting-table-watching-something-tablet_85574-14718.jpg?w=740)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

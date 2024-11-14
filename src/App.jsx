@@ -10,7 +10,6 @@ import SignupFormDirector from './components/CastingDirector/SignupFormDirector'
 import SignupFormArtist from './components/Artist/SignupFormArtist';
 import LandingPage from './components/LandingPage';
 import RegistrationForm from './components/CastingDirector/RegistrationForm';
-import RegisterForm from './components/Artist/RegisterForm';
 import ArtistPage from './components/Artist/ArtistPage';
 import ArtistNavbar from './components/Artist/ArtistNavbar';
 import DirectorPage from './components/CastingDirector/DirectorPage';
@@ -22,13 +21,15 @@ import CastingForm from './components/CastingDirector/CastingForm';
 import DirectorHome from './components/CastingDirector/DirectorHome';
 import DirectorDashboard from './components/CastingDirector/DirectorDashboard';
 import ReactDOM from 'react-dom';
+import ArtistRegister from './components/Artist/ArtistRegister.jsx';
 
 function App() {
   
 
   return (
     <>
-      {/* <BrowserRouter>
+    
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage/>} />
           <Route path="/login" element={<LoginForm/>} />
@@ -38,11 +39,11 @@ function App() {
           <Route path="/artist-navbar" element={<ArtistNavbar/>}/>
           <Route path="/director-page" element={<DirectorPage/>}/>
           <Route path="/director-navbar" element={<DirectorNavbar/>}/>
-          <Route path="/register-artist" element={<RegisterForm/>}/>
+          <Route path="/register-artist" element={<ArtistRegister/>}/>
           <Route path="/register-director" element={<RegistrationForm/>}/>
         </Routes>
         <Footer></Footer>
-    </BrowserRouter> */}
+    </BrowserRouter>
     {/* <ArtistProfileDashboard></ArtistProfileDashboard> */}
      {/* <BrowserRouter>
       <Routes>
@@ -52,7 +53,7 @@ function App() {
       </Routes>
     </BrowserRouter> */}
     {/* <TalentPosts></TalentPosts> */}
-      <BrowserRouter>
+      {/* <BrowserRouter>
       <Routes>
         <Route path="/" element={<DirectorHome />} />
         <Route path="/profile" element={<ArtistProfileDashboard />} />
@@ -61,7 +62,7 @@ function App() {
         <Route path="/director/dashboard" element={<DirectorDashboard />} />
         <Route path="/add-talent-post" element={<CastingForm/>}/>
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter> */}
     </>
   )
 }

@@ -20,17 +20,19 @@ function LandingPage() {
       <div className="relative z-10">
         <Navbar />
         
-        <main className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 text-center">
+        <main className="flex flex-col items-end justify-center min-h-screen px-4 sm:px-6 lg:px-8 text-left">
           <div className="max-w-3xl mx-auto">
-            {/* Replace Film icon with a different element (e.g., an image or a placeholder div) */}
-            {/* <div className="mx-auto h-16 w-16 bg-white rounded-full mb-8"></div> Placeholder */}
-            
+            {/* Heading */}
             <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6">
-              Connect with the Perfect Cast
+              Connect with <br/> the Perfect Cast
             </h1>
-            <p className="text-xl text-gray-200 mb-12">
-              Where talented artists meet visionary directors. Start your journey in the world of entertainment today.
+
+            {/* Paragraph */}
+            <p className="text-xl text-left text-gray-200 mb-12">
+              Where talented artists meet <br/> visionary directors. Start your <br/> journey in the world of <br/> entertainment today.
             </p>
+
+            {/* Get Started Button */}
             <button className="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition duration-200">
               Get Started
             </button>
