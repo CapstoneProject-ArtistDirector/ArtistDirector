@@ -22,13 +22,14 @@ import DirectorHome from './components/CastingDirector/DirectorHome';
 import DirectorDashboard from './components/CastingDirector/DirectorDashboard';
 import ReactDOM from 'react-dom';
 import ArtistRegister from './components/Artist/ArtistRegister.jsx';
+import DirectorDash from './components/CastingDirector/DirectorDash.jsx';
 
 function App() {
   
 
   return (
     <>
-    
+{/*     
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage/>} />
@@ -43,7 +44,7 @@ function App() {
           <Route path="/register-director" element={<RegistrationForm/>}/>
         </Routes>
         <Footer></Footer>
-    </BrowserRouter>
+    </BrowserRouter> */}
     {/* <ArtistProfileDashboard></ArtistProfileDashboard> */}
      {/* <BrowserRouter>
       <Routes>
@@ -63,6 +64,16 @@ function App() {
         <Route path="/add-talent-post" element={<CastingForm/>}/>
       </Routes>
     </BrowserRouter> */}
+     <BrowserRouter>
+      <Routes>
+        {/* <Route path="/" element={<TalentPosts />} />
+        <Route path="/profile" element={<ProfileDashboard />} /> */}
+        <Route path="/applied-posts" element={<AppliedPosts />} />
+        <Route path="/" element={<DirectorHome />} />
+        <Route path="/director/dashboard" element={<DirectorDash/>} />
+        <Route path="/add-talent-post" element={<CastingForm />} />
+      </Routes>
+    </BrowserRouter>
     </>
   )
 }
