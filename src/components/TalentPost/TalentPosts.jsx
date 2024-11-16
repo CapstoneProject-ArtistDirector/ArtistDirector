@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import TalentCard from "./TalentCard";
 import TalentPostDetails from "./TalentPostDetails";
-import { FiLogOut, FiUser } from "react-icons/fi";
+import { FiLogOut, FiUser, FiHome } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
+import { useNavigate } from "react-router-dom";
 
 function TalentPosts() {
   const [filter, setFilter] = useState("all");
   const [selectedPost, setSelectedPost] = useState(null);
+  const [showSignOutModal, setShowSignOutModal] = useState(false);
+  
+  const navigate = useNavigate();
 
   const talentPosts = [
     {
@@ -71,9 +75,20 @@ function TalentPosts() {
     setSelectedPost(post);
   };
 
+  const handleSignOutConfirmation = () => {
+    setShowSignOutModal(true);
+  };
+
   const handleSignOut = () => {
-    console.log("Sign out clicked");
-    // Add sign out logic here
+    console.log("User signed out");
+    // Simulate sign-out logic here (e.g., clearing localStorage or cookies)
+    // Redirect to home page after sign-out
+    setShowSignOutModal(false);  // Close the modal
+    navigate("/home-page");  // Redirect to home page
+  };
+
+  const handleCancelSignOut = () => {
+    setShowSignOutModal(false);  // Close the modal without signing out
   };
 
   const handleProfile = () => {
@@ -101,28 +116,35 @@ function TalentPosts() {
       <nav className="fixed top-0 left-0 right-0 bg-black/20 backdrop-blur-sm z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex justify-end items-center space-x-4 w-full mb-6">
+            <div className="flex items-center space-x-4">
+              <Link
+                to="/director"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
+              >
+                <FiHome className="mr-2" />
+                Home
+              </Link>
               <Link
                 to="/applied-posts"
-                className="flex items-center no-underline text-indigo-400 hover:text-purple-300"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
               >
                 <RxDashboard className="mr-2" />
                 Dashboard
               </Link>
-
               <Link
-                to="/dashboard"
-                className="flex items-center no-underline text-indigo-400 hover:text-purple-400"
+                to="/profile"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
               >
                 <FiUser className="mr-2" />
                 Profile
               </Link>
-
+            </div>
+            <div className="flex items-center space-x-6">
               <button
-                onClick={handleSignOut}
-                className="flex items-center px-4 py-2 text-sm text-blue-500 border-red-500/85 rounded-lg hover:bg-red-500/85 hover:text-white transition-colors"
+                onClick={handleSignOutConfirmation}
+                className="flex items-center text-white hover:text-red-400 transition-colors"
               >
-                <FiLogOut className="inline-block mr-2 text-xl" />
+                <FiLogOut className="mr-2" />
                 Sign Out
               </button>
             </div>
@@ -167,6 +189,29 @@ function TalentPosts() {
           </div>
         </div>
       </div>
+
+      {/* Sign Out Confirmation Modal */}
+      {showSignOutModal && (
+        <div className="fixed inset-0 flex justify-center items-center bg-black/50">
+          <div className="bg-gray-800 rounded-lg p-6 w-96 text-center">
+            <h2 className="text-lg text-white mb-4">Are you sure you want to sign out?</h2>
+            <div className="space-x-4">
+              <button
+                onClick={handleSignOut}
+                className="px-4 py-2 bg-red-500 text-white rounded-lg"
+              >
+                Yes, Sign Out
+              </button>
+              <button
+                onClick={handleCancelSignOut}
+                className="px-4 py-2 bg-gray-600 text-white rounded-lg"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

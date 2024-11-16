@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiHome, FiUser, FiLogOut, FiPlusCircle, FiTrash2 } from 'react-icons/fi';
 import PostDetails from './PostDetails';
-import ApplicantsList from './ApplicantsList';
 
 function DirectorDash() {
   const [selectedPost, setSelectedPost] = useState(null);
@@ -34,10 +33,6 @@ function DirectorDash() {
       applicants: 8
     }
   ];
-
-  const handleShortlistApplicant = (applicant) => {
-    setShortlistedApplicants([...shortlistedApplicants, applicant]);
-  };
 
   const handleDeletePost = (postId) => {
     // Ideally, make a call to API to delete post
@@ -123,7 +118,7 @@ function DirectorDash() {
             </>
           ) : (
             <div className="flex gap-8">
-              {/* Left Sidebar - Post Details */}
+              {/* Left Sidebar - Links to Post Details and Applicants List */}
               <div className="w-1/3">
                 <button
                   onClick={() => setSelectedPost(null)}
@@ -131,7 +126,6 @@ function DirectorDash() {
                 >
                   ← Back to all posts
                 </button>
-                <PostDetails post={selectedPost} />
                 <div className="flex gap-4 mt-4">
                   <button
                     onClick={() => handleDeletePost(selectedPost.id)}
@@ -140,22 +134,34 @@ function DirectorDash() {
                     <FiTrash2 className="inline mr-2" /> Delete
                   </button>
                 </div>
-                {/* Link to View Shortlisted Applicants */}
-                <Link
-                  to={`/view-shortlisted/${selectedPost.id}`} // This will redirect to view shortlisted page
-                  className="mt-4 text-white bg-blue-500 hover:bg-blue-400 px-4 py-2 rounded-full"
-                >
-                  View Shortlisted Applicants
-                </Link>
+                {/* Links to separate pages */}
+                <div className="mt-4">
+                  <Link
+                    to={`/post-details`}
+                    className="text-base text-blue-400 hover:text-blue-300"
+                  >
+                    View Post Details
+                  </Link>
+                </div>
+                <div className="mt-2">
+                  <Link
+                    to={`/view-shortlisted`}
+                    className="text-base text-lime-500 hover:text-blue-300"
+                  >
+                    View Shortlisted Applicants
+                  </Link>
+                </div>
               </div>
 
               {/* Right Side - Applicants List */}
               <div className="w-2/3 space-y-8">
-                <ApplicantsList
-                  postId={selectedPost.id}
-                  onShortlist={handleShortlistApplicant}
-                  shortlistedApplicants={shortlistedApplicants}
-                />
+                {/* No applicants list here anymore, just the link */}
+                <Link
+                  to={`/view-shortlisted/${selectedPost.id}`}
+                  className="text-base text-lime-500 hover:text-blue-300"
+                >
+                  View Shortlisted Applicants
+                </Link>
               </div>
             </div>
           )}

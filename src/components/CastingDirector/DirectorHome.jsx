@@ -4,9 +4,14 @@ import { FiHome, FiUser, FiLogOut, FiPlusCircle } from 'react-icons/fi';
 
 function DirectorHome() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: "url('https://plus.unsplash.com/premium_photo-1726729477040-8c257a4391cd?q=80&w=1435&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", // Replace with your image URL
+      }}
+    >
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 bg-black/20 backdrop-blur-sm z-10">
+      <nav className="fixed top-0 left-0 right-0 bg-black/50 backdrop-blur-sm z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
@@ -47,26 +52,22 @@ function DirectorHome() {
 
       {/* Main Content */}
       <div className="pt-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center justify-center">
-        <div className="max-w-3xl mx-auto text-center space-y-12">
+        <div className="max-w-3xl mx-auto text-center space-y-12 bg-black/60 p-6 rounded-lg backdrop-blur-sm">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-8">
             Welcome to the Director's Portal
           </h1>
-          
+
           <div className="space-y-8">
-            {[
-              {
-                text: "Art is not what you see, but what you make others see.",
-                author: "Edgar Degas"
-              },
-              {
-                text: "Every artist was first an amateur.",
-                author: "Ralph Waldo Emerson"
-              },
-              {
-                text: "Creativity takes courage.",
-                author: "Henri Matisse"
-              }
-            ].map((quote, index) => (
+            {[{
+              text: "Art is not what you see, but what you make others see.",
+              author: "Edgar Degas"
+            }, {
+              text: "Every artist was first an amateur.",
+              author: "Ralph Waldo Emerson"
+            }, {
+              text: "Creativity takes courage.",
+              author: "Henri Matisse"
+            }].map((quote, index) => (
               <div
                 key={index}
                 className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 transform hover:scale-105 transition-transform"

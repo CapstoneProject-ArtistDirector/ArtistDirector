@@ -5,43 +5,49 @@ import { FiHome, FiUser, FiLogOut, FiArrowLeft, FiArrowRight } from 'react-icons
 function CastingForm() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
-    // Project Info
     talentType: '',
     roleType: '',
     projectDetails: '',
     startDate: '',
     endDate: '',
     submissionDeadline: '',
-    // Work Conditions
     paymentInfo: '',
     workHours: '',
     location: '',
-    // Role Requirements
     gender: '',
     preScreenRequest: '',
-    // Media
-    imageUrl: ''
+    imageUrl: '',
   });
 
   const handleInputChange = (name, value) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleNext = () => {
-    setCurrentStep(prev => Math.min(prev + 1, 4));
+    setCurrentStep((prev) => Math.min(prev + 1, 4));
   };
 
   const handlePrev = () => {
-    setCurrentStep(prev => Math.max(prev - 1, 1));
+    setCurrentStep((prev) => Math.max(prev - 1, 1));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Add submission logic here
+    // Add form submission logic here
+  };
+
+  // Role options based on selected talent type
+  const roleOptions = {
+    Actor: ['Lead Role', 'Supporting Role', 'Extra', 'Villain'],
+    Singer: ['Lead Singer', 'Backup Singer', 'Soloist', 'Chorus'],
+    Dancer: ['Ballet Dancer', 'Hip-Hop Dancer', 'Contemporary Dancer', 'Breakdancer'],
+    Model: ['Fashion Model', 'Commercial Model', 'Runway Model'],
+    'Voice Artist': ['Narrator', 'Character Voice', 'Voice Over', 'Audio Book Reader'],
+    Performer: ['Circus Performer', 'Street Performer', 'Variety Performer'],
   };
 
   const renderStepContent = () => {
@@ -50,16 +56,14 @@ function CastingForm() {
         return (
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Talent Type
-              </label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Talent Type</label>
               <select
                 value={formData.talentType}
                 onChange={(e) => handleInputChange('talentType', e.target.value)}
                 className="w-full bg-gray-700 border border-gray-600 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Select talent type</option>
-                {['Actor', 'Musician', 'Dancer', 'Model', 'Voice Artist', 'Performer'].map((type) => (
+                {['Actor', 'Singer', 'Dancer', 'Model', 'Voice Artist', 'Performer'].map((type) => (
                   <option key={type} value={type}>
                     {type}
                   </option>
@@ -68,22 +72,25 @@ function CastingForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Role Type
-              </label>
-              <input
-                type="text"
+              <label className="block text-sm font-medium text-gray-300 mb-2">Role Type</label>
+              <select
                 value={formData.roleType}
                 onChange={(e) => handleInputChange('roleType', e.target.value)}
                 className="w-full bg-gray-700 border border-gray-600 text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="e.g., Lead Role, Supporting Role"
-              />
+                disabled={!formData.talentType}
+              >
+                <option value="">Select role type</option>
+                {formData.talentType &&
+                  roleOptions[formData.talentType].map((role) => (
+                    <option key={role} value={role}>
+                      {role}
+                    </option>
+                  ))}
+              </select>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Project Details
-              </label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Project Details</label>
               <textarea
                 value={formData.projectDetails}
                 onChange={(e) => handleInputChange('projectDetails', e.target.value)}
@@ -95,9 +102,7 @@ function CastingForm() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Start Date
-                </label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Project Start Date</label>
                 <input
                   type="date"
                   value={formData.startDate}
@@ -107,9 +112,7 @@ function CastingForm() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  End Date
-                </label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Project End Date</label>
                 <input
                   type="date"
                   value={formData.endDate}
@@ -120,9 +123,7 @@ function CastingForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Submission Deadline
-              </label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Application Deadline</label>
               <input
                 type="date"
                 value={formData.submissionDeadline}
@@ -136,9 +137,7 @@ function CastingForm() {
         return (
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Payment Information
-              </label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Payment Information</label>
               <input
                 type="text"
                 value={formData.paymentInfo}
@@ -149,9 +148,7 @@ function CastingForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Work Hours
-              </label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Work Hours</label>
               <input
                 type="text"
                 value={formData.workHours}
@@ -162,9 +159,7 @@ function CastingForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Location
-              </label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Location</label>
               <input
                 type="text"
                 value={formData.location}
@@ -179,9 +174,7 @@ function CastingForm() {
         return (
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Gender
-              </label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Gender</label>
               <select
                 value={formData.gender}
                 onChange={(e) => handleInputChange('gender', e.target.value)}
@@ -195,9 +188,7 @@ function CastingForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Pre-screen Request
-              </label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Pre-screen Request</label>
               <select
                 value={formData.preScreenRequest}
                 onChange={(e) => handleInputChange('preScreenRequest', e.target.value)}
@@ -214,9 +205,7 @@ function CastingForm() {
         return (
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Image URL
-              </label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Add Visual Reference(url)</label>
               <input
                 type="url"
                 value={formData.imageUrl}
@@ -228,9 +217,7 @@ function CastingForm() {
 
             {formData.imageUrl && (
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Preview
-                </label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Preview</label>
                 <div className="mt-2 relative aspect-video rounded-lg overflow-hidden bg-gray-700">
                   <img
                     src={formData.imageUrl}
@@ -294,7 +281,7 @@ function CastingForm() {
       <div className="pt-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
           <div className="bg-gray-900 backdrop-blur-sm rounded-lg p-6">
-            <h2 className="text-2xl text-center font-bold text-white mb-6 ">CREATE CASTING CALL</h2>
+            <h2 className="text-2xl text-center font-bold text-white mb-6">CREATE CASTING CALL</h2>
 
             {/* Progress Steps */}
             <div className="mb-8">

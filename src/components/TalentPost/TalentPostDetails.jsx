@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiCalendar, FiDollarSign, FiMapPin, FiClock, FiArrowLeft, FiBriefcase, FiCheckCircle, FiAward } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 function TalentPostDetails({ post, onBack }) {
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const navigate = useNavigate();
+
   const requirements = [
     'Minimum 5 years of professional experience',
     'Strong portfolio of previous work',
@@ -18,17 +22,19 @@ function TalentPostDetails({ post, onBack }) {
     'Industry networking events'
   ];
 
+  const handleSubmitApplication = () => {
+    // Simulate submitting the application
+    setShowSuccessModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowSuccessModal(false);
+    navigate('/applied-posts'); // Navigate to the dashboard after closing the modal
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 pt-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Back Button */}
-        <button
-          onClick={onBack}
-          className="flex items-center text-blue-400 hover:text-blue-300 mb-6"
-        >
-          <FiArrowLeft className="mr-2" />
-          Back to Opportunities
-        </button>
 
         {/* Hero Section */}
         <div className="relative rounded-xl overflow-hidden mb-8">
@@ -144,12 +150,31 @@ function TalentPostDetails({ post, onBack }) {
 
           {/* Apply Button */}
           <div className="flex justify-center">
-            <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors">
+            <button
+              onClick={handleSubmitApplication}
+              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
+            >
               Submit Application
             </button>
           </div>
         </div>
       </div>
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 flex justify-center items-center bg-black/50">
+          <div className="bg-gray-800 rounded-lg p-6 w-96 text-center">
+            <h2 className="text-lg text-white mb-4">Application Submitted Successfully!</h2>
+            <p className="text-gray-400 mb-4">Your application has been submitted. You will be redirected to the dashboard shortly.</p>
+            <button
+              onClick={handleCloseModal}
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg"
+            >
+              Go to Dashboard
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

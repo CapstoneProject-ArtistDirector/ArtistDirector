@@ -1,19 +1,25 @@
-import React from "react";
-import {
-  FiMail,
-  FiPhone,
-  FiMapPin,
-  FiUser,
-  FiLogOut,
-  FiArrowLeft,
-} from "react-icons/fi";
+import React, { useState } from "react";
+import { FiMail, FiPhone, FiMapPin, FiUser, FiLogOut, FiHome } from "react-icons/fi";
 import { RxDashboard } from "react-icons/rx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function ArtistProfileDashboard() {
+  const [showSignOutModal, setShowSignOutModal] = useState(false);
+  const navigate = useNavigate();
+
   const handleSignOut = () => {
-    console.log("Sign out clicked");
-    // Add sign out logic here
+    console.log("User signed out");
+    // Simulate sign-out logic here (e.g., clearing localStorage or cookies)
+    // Redirect to home page after sign-out
+    navigate("/home-page");
+  };
+
+  const handleSignOutConfirmation = () => {
+    setShowSignOutModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowSignOutModal(false);
   };
 
   const userProfile = {
@@ -57,30 +63,35 @@ function ArtistProfileDashboard() {
       <nav className="fixed top-0 left-0 right-0 bg-black/20 backdrop-blur-sm z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex-shrink-0">
-              {/* <h1 className="text-white text-xl font-bold">Profile</h1> */}
-            </div>
-            <div className="flex justify-end items-center space-x-4 mb-6">
+            <div className="flex items-center space-x-4">
               <Link
-                to="/applied-posts" // Update with your desired route
-                className="flex items-center no-underline text-indigo-400 hover:text-purple-300"
+                to="/"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
+              >
+                <FiHome className="mr-2" />
+                Home
+              </Link>
+              <Link
+                to="/applied-posts"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
               >
                 <RxDashboard className="mr-2" />
                 Dashboard
               </Link>
               <Link
-                to="/dashboard"
-                className="flex items-center no-underline text-indigo-400 hover:text-purple-400"
+                to="/profile"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
               >
                 <FiUser className="mr-2" />
                 Profile
               </Link>
-
+            </div>
+            <div className="flex items-center space-x-6">
               <button
-                onClick={handleSignOut}
-                className="flex items-center px-4 py-2 text-sm text-blue-500 border-red-500/85 rounded-lg hover:bg-red-500/85 hover:text-white transition-colors"
+                onClick={handleSignOutConfirmation}
+                className="flex items-center text-white hover:text-red-400 transition-colors"
               >
-                <FiLogOut className="inline-block mr-2 text-xl" />
+                <FiLogOut className="mr-2" />
                 Sign Out
               </button>
             </div>
@@ -230,6 +241,29 @@ function ArtistProfileDashboard() {
           </div>
         </div>
       </div>
+
+      {/* Sign Out Confirmation Modal */}
+      {showSignOutModal && (
+        <div className="fixed inset-0 flex justify-center items-center bg-black/50">
+          <div className="bg-gray-800 rounded-lg p-6 w-96 text-center">
+            <h2 className="text-lg text-white mb-4">Are you sure you want to sign out?</h2>
+            <div className="space-x-4">
+              <button
+                onClick={handleSignOut}
+                className="px-4 py-2 bg-red-500 text-white rounded-lg"
+              >
+                Yes, Sign Out
+              </button>
+              <button
+                onClick={handleCloseModal}
+                className="px-4 py-2 bg-gray-600 text-white rounded-lg"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

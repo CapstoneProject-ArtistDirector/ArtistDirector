@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import {
@@ -11,9 +11,14 @@ import {
   FiArrowLeft,
   FiUser,
   FiLogOut,
+  FiHome,
 } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 function AppliedPosts() {
+  const [showSignOutModal, setShowSignOutModal] = useState(false);
+  const navigate = useNavigate();
+
   // Mock data for applied posts
   const appliedPosts = [
     {
@@ -66,65 +71,71 @@ function AppliedPosts() {
     }
   };
 
+  const handleSignOutConfirmation = () => {
+    setShowSignOutModal(true);
+  };
+
   const handleSignOut = () => {
-    console.log("Sign out clicked");
-    // Add sign out logic here
+    console.log("User signed out");
+    // Simulate sign-out logic here (e.g., clearing localStorage or cookies)
+    // Redirect to home page after sign-out
+    setShowSignOutModal(false);  // Close the modal
+    navigate("/home-page");  // Redirect to home page
+  };
+
+  const handleCancelSignOut = () => {
+    setShowSignOutModal(false);  // Close the modal without signing out
   };
 
   return (
     <div className="min-h-screen bg-gray-900 pt-16">
       <nav className="fixed top-0 left-0 right-0 bg-black/20 backdrop-blur-sm z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-end items-center space-x-4 mb-6">
-            <Link
-              to="/applied-posts" // Update with your desired route
-              className="flex items-center no-underline text-indigo-400 hover:text-purple-300"
-            >
-              <RxDashboard className="mr-2" />
-              Dashboard
-            </Link>
-            <Link
-              to="/dashboard"
-              className="flex items-center no-underline text-indigo-400 hover:text-purple-400"
-            >
-              <FiUser className="mr-2" />
-              Profile
-            </Link>
-
-            <button
-              onClick={handleSignOut}
-              className="flex items-center px-4 py-2 text-sm text-blue-500 border-red-500/85 rounded-lg hover:bg-red-500/85 hover:text-white transition-colors"
-            >
-              <FiLogOut className="inline-block mr-2 text-xl" />
-              Sign Out
-            </button>
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-4">
+              <Link
+                to="/"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
+              >
+                <FiHome className="mr-2" />
+                Home
+              </Link>
+              <Link
+                to="/applied-posts"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
+              >
+                <RxDashboard className="mr-2" />
+                Dashboard
+              </Link>
+              <Link
+                to="/profile"
+                className="flex items-center text-white hover:text-blue-400 transition-colors no-underline"
+              >
+                <FiUser className="mr-2" />
+                Profile
+              </Link>
+            </div>
+            <div className="flex items-center space-x-6">
+              <button
+                onClick={handleSignOutConfirmation}
+                className="flex items-center text-white hover:text-red-400 transition-colors"
+              >
+                <FiLogOut className="mr-2" />
+                Sign Out
+              </button>
+            </div>
           </div>
         </div>
       </nav>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white">
-            Applied Opportunities
-          </h1>
-          <p className="text-gray-400 mt-2">
-            Track the status of your applications
-          </p>
+          <h1 className="text-3xl font-bold text-white">Applied Opportunities</h1>
+          <p className="text-gray-400 mt-2">Track the status of your applications</p>
         </div>
-        <Link
-          to="/" // Update with your desired route
-          className="flex items-center no-underline text-indigo-400 hover:text-purple-300 mb-6"
-        >
-          <FiArrowLeft className="mr-2" />
-          Back to Opportunities
-        </Link>
-
         <div className="space-y-6">
           {appliedPosts.map((post) => (
-            <div
-              key={post.id}
-              className="bg-gray-800 rounded-lg overflow-hidden"
-            >
+            <div key={post.id} className="bg-gray-800 rounded-lg overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/4">
                   <img
@@ -187,6 +198,29 @@ function AppliedPosts() {
           ))}
         </div>
       </div>
+
+      {/* Sign Out Confirmation Modal */}
+      {showSignOutModal && (
+        <div className="fixed inset-0 flex justify-center items-center bg-black/50">
+          <div className="bg-gray-800 rounded-lg p-6 w-96 text-center">
+            <h2 className="text-lg text-white mb-4">Are you sure you want to sign out?</h2>
+            <div className="space-x-4">
+              <button
+                onClick={handleSignOut}
+                className="px-4 py-2 bg-red-500 text-white rounded-lg"
+              >
+                Yes, Sign Out
+              </button>
+              <button
+                onClick={handleCancelSignOut}
+                className="px-4 py-2 bg-gray-600 text-white rounded-lg"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

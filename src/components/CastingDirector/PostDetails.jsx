@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'; // for accessing route parameters
 import { FiEdit2, FiCalendar, FiDollarSign, FiMapPin, FiClock, FiSave, FiX } from 'react-icons/fi';
 
-function PostDetails({ post }) {
+function PostDetails({ posts }) {
+  const { postId } = useParams(); // Get postId from URL
   const [isEditing, setIsEditing] = useState(false);
-  const [editedPost, setEditedPost] = useState(post);
+  const [editedPost, setEditedPost] = useState(null);
+
+  // Fetch the post based on postId
+  useEffect(() => {
+    const post = posts.find((p) => p.id === parseInt(postId));
+    setEditedPost(post);
+  }, [postId, posts]);
+
+  if (!editedPost) return <div>Loading...</div>; // Loading state
 
   const handleSave = () => {
     // Add save logic here
@@ -11,7 +21,7 @@ function PostDetails({ post }) {
   };
 
   const handleCancel = () => {
-    setEditedPost(post);
+    setEditedPost(editedPost); // Reset to original post data
     setIsEditing(false);
   };
 
@@ -72,25 +82,25 @@ function PostDetails({ post }) {
         ) : (
           <>
             <div>
-              <h3 className="text-lg font-semibold text-white mb-2">{post.title}</h3>
-              <p className="text-gray-300">{post.description}</p>
+              <h3 className="text-lg font-semibold text-white mb-2">{editedPost.title}</h3>
+              <p className="text-gray-300">{editedPost.description}</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center text-gray-300">
                 <FiMapPin className="mr-2 text-blue-400" />
-                <span>Los Angeles, CA</span>
+                <span>{editedPost.location}</span>
               </div>
               <div className="flex items-center text-gray-300">
                 <FiCalendar className="mr-2 text-blue-400" />
-                <span>Starting Sept 2023</span>
+                <span>{editedPost.date}</span>
               </div>
               <div className="flex items-center text-gray-300">
                 <FiClock className="mr-2 text-blue-400" />
-                <span>6 months</span>
+                <span>{editedPost.duration}</span>
               </div>
               <div className="flex items-center text-gray-300">
                 <FiDollarSign className="mr-2 text-blue-400" />
-                <span>$5000/month</span>
+                <span>{editedPost.compensation}</span>
               </div>
             </div>
           </>
