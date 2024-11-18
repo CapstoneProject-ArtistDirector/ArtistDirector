@@ -1,8 +1,11 @@
 import React from 'react';
+import Navbar from './Navbar';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Contact() {
   return (
+    <div className="min-h-screen relative">
+    <Navbar/>
     <section id="contact" className="py-24 bg-gray-900">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
@@ -66,6 +69,7 @@ export default function Contact() {
         </div>
       </div>
     </section>
+    </div>
   );
 }
 

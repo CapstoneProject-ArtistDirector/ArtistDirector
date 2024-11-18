@@ -1,8 +1,21 @@
 import React from 'react';
-import { Award, Users, Star, Clapperboard } from 'lucide-react';
+import { Award, Users, Star, Clapperboard,Menu } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import Navbar from './Navbar';
 
 export default function About() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSignUp = () => {
+    navigate('/signup'); // Navigate to the "signup" page
+  };
+
   return (
+    <div className="min-h-screen relative">
+    <Navbar/>
     <section id="about" className="py-24 bg-gray-900">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
@@ -52,6 +65,7 @@ export default function About() {
         </div>
       </div>
     </section>
+    </div>
   );
 }
 

@@ -1,8 +1,14 @@
 import React from "react";
 import { Palette, Sparkles } from "lucide-react";
 import Carousel from "./Carousel";
+import RegisterArtist from "./Artist/RegisterArtist";
+
 
 function ArtistPage() {
+
+    const handleRegister = () => {
+    navigate('/register-artist'); // Navigate to the "signup" page
+  };
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Hero Section */}
@@ -29,12 +35,10 @@ function ArtistPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity">
+              <button
+              onClick={handleRegister}
+              className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity">
                 Get Started
-              </button>
-
-              <button className="px-8 py-4 border border-purple-500/30 rounded-lg font-semibold text-lg hover:bg-purple-500/10 transition-colors">
-                Learn More
               </button>
             </div>
 

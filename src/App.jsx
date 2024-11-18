@@ -5,7 +5,6 @@ import viteLogo from "/vite.svg";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/common/Footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LoginForm from "./components/common/LoginForm";
 import SignupFormDirector from "./components/CastingDirector/SignupFormDirector";
 import SignupFormArtist from "./components/Artist/SignupFormArtist";
 import LandingPage from "./components/LandingPage";
@@ -39,12 +38,17 @@ import Footer1 from "./components/Footer1.jsx";
 import Signup from "./components/Signup.jsx";
 import DirectorPage from "./components/DirectorPage.jsx";
 import ArtistPage from "./components/ArtistPage.jsx";
+import LoginForm from "./components/LoginForm.jsx";
+import Dashboard from "./components/Dashboard.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 
 function App() {
   return (
     <>
+    {/* <Dashboard></Dashboard> */}
    <BrowserRouter>
+   <Navbar/>
    <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/about" element={<About />}/>
@@ -54,9 +58,12 @@ function App() {
         <Route path="/login" element={<LoginForm/>} />
         <Route path="/director-page" element={<DirectorPage/>}/>
         <Route path="/artist-page" element={<ArtistPage/>}/>
+        <Route path="/register-artist" element={<RegisterArtist/>}/>
+        <Route path="/register-director" element={<RegistrationForm/>}/>
       </Routes>
       <Footer1></Footer1>
       </BrowserRouter>
+      
       
       {/* <BrowserRouter>
         <Routes>

@@ -1,8 +1,11 @@
 import React from 'react';
 import { Theater, Film, Tv, Radio } from 'lucide-react';
+import Navbar from './Navbar';
 
 export default function Service() {
   return (
+    <div className="min-h-screen relative">
+    <Navbar/>
     <section id="services" className="py-24 bg-gray-800">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
@@ -37,6 +40,7 @@ export default function Service() {
         </div>
       </div>
     </section>
+    </div>
   );
 }
 
