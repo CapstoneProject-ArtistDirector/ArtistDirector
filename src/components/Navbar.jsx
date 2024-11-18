@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { Film, Menu, X } from "lucide-react";
 
 export default function Navbar() {
@@ -16,14 +15,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-sm">
+    <nav className="fixed w-full z-50 bg-transparent backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center  space-x-3">
             <Film className="h-8 w-8 text-gray-300" />
 
             <span className="text-2xl font-bold text-white tracking-tight">
-              TalentHunt
+              Talent Hunt
             </span>
           </div>
 
@@ -47,7 +46,7 @@ export default function Navbar() {
 
        transition-all duration-300 transform hover:scale-105"
             >
-              Register Now
+              Sign In
             </button>
           </div>
 
