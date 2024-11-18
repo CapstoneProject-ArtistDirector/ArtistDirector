@@ -50,4 +50,5 @@ const ServiceCard = ({ icon, title, description }) => (
     <h3 className="text-xl font-semibold text-white mb-4">{title}</h3>
     <p className="text-gray-400">{description}</p>
   </div>
+//   FrontEnd
 );
