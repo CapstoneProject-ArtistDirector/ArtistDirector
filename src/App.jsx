@@ -10,9 +10,8 @@ import SignupFormDirector from "./components/CastingDirector/SignupFormDirector"
 import SignupFormArtist from "./components/Artist/SignupFormArtist";
 import LandingPage from "./components/LandingPage";
 import RegistrationForm from "./components/CastingDirector/RegistrationForm";
-import ArtistPage from "./components/Artist/ArtistPage";
+// import ArtistPage from "./components/Artist/ArtistPage";
 import ArtistNavbar from "./components/Artist/ArtistNavbar";
-import DirectorPage from "./components/CastingDirector/DirectorPage";
 import DirectorNavbar from "./components/CastingDirector/DirectorNavbar";
 import ArtistProfileDashboard from "./components/Artist/ArtistProfileDashboard";
 import TalentPosts from "./components/TalentPost/TalentPosts";
@@ -33,26 +32,32 @@ import SidebarEx from "./components/SidebarEx.jsx";
 import RegisterArtist from "./components/Artist/RegisterArtist.jsx";
 import DirectorHomePage from "./components/DirectorHomePage.jsx";
 import Home from "./components/Home.jsx";
-import Navbar from "./components/Navbar.jsx";
 import About from "./components/About.jsx";
 import Service from "./components/Service.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer1 from "./components/Footer1.jsx";
+import Signup from "./components/Signup.jsx";
+import DirectorPage from "./components/DirectorPage.jsx";
+import ArtistPage from "./components/ArtistPage.jsx";
 
 
 function App() {
   return (
     <>
    <BrowserRouter>
-   <Navbar />
    <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/services" element={<Service />}/>
         <Route path="/contact" element={<Contact />}/>
+        <Route path="/signup" element={<Signup/>}/>
+        <Route path="/login" element={<LoginForm/>} />
+        <Route path="/director-page" element={<DirectorPage/>}/>
+        <Route path="/artist-page" element={<ArtistPage/>}/>
       </Routes>
       <Footer1></Footer1>
       </BrowserRouter>
+      
       {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage/>} />

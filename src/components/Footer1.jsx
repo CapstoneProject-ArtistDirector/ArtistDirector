@@ -1,5 +1,14 @@
 import React from 'react';
-import { Film } from 'lucide-react';
+import { Clapperboard, Film } from 'lucide-react';
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaFacebook,
+  FaInstagram,
+  FaTwitter,
+  FaYoutube
+} from "react-icons/fa";
 
 export default function Footer1() {
   return (
@@ -8,12 +17,18 @@ export default function Footer1() {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
-              <Film className="h-8 w-8 text-gray-300" />
-              <span className="text-2xl font-bold text-white">CastCraft</span>
+              <Clapperboard className="h-8 w-8 text-gray-300" />
+              <span className="text-2xl font-bold text-white">Talent Hunt</span>
             </div>
             <p className="text-gray-400">
               Connecting exceptional talent with visionary productions since 2005.
             </p>
+            <div className="text-white flex space-x-4">
+                  <FaFacebook className="text-xl cursor-pointer hover:text-blue-500" />
+                  <FaInstagram className="text-xl cursor-pointer hover:text-pink-500" />
+                  <FaTwitter className="text-xl cursor-pointer hover:text-blue-400" />
+                  <FaYoutube className="text-xl cursor-pointer hover:text-red-500" />
+                </div>
           </div>
 
           <div>
@@ -47,7 +62,7 @@ export default function Footer1() {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} CastCraft. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} TalentHunt. All rights reserved.</p>
         </div>
       </div>
     </footer>

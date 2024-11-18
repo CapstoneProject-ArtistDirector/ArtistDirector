@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { Clapperboard, Film, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSignUp = () => {
+    navigate('/signup'); // Navigate to the "signup" page
+  };
 
   return (
     <nav className="fixed w-full z-50 bg-black/30 backdrop-blur-sm">
@@ -11,7 +17,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-3">
             <Clapperboard className="h-8 w-8 text-gray-300" />
-            <span className="text-2xl font-bold text-white tracking-tight">TalentHunt</span>
+            <span className="text-2xl font-bold text-white tracking-tight">Talent Hunt</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -19,10 +25,9 @@ export default function Navbar() {
             <Link to="/" className='text-white no-underline'>Home</Link>
             <Link to="/about" className='text-white no-underline'>About</Link>
             <Link to="/services" className='text-white no-underline'>Services</Link>
-            <Link to="/portfolio" className='text-white no-underline'>Portfolio</Link>
             <Link to="/contact" className='text-white no-underline'>Contact</Link>
-            <button className="px-6 py-2 bg-gray-200 hover:bg-white text-gray-900 font-semibold rounded-full transition-all duration-300 transform hover:scale-105">
-              Register Now
+            <button onClick={handleSignUp} className="px-4 py-2 bg-gray-200 hover:bg-white text-gray-900 font-semibold rounded-full transition-all duration-300 transform hover:scale-105">
+              Sign Up
             </button>
           </div>
 
